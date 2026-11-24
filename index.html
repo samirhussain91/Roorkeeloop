@@ -5,152 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RoorkeeLoop</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
-body{background:#f6f7fb;color:#111}
-header{background:#0f172a;color:#fff;padding:16px 14px;position:sticky;top:0;z-index:10}
-.top{display:flex;justify-content:space-between;align-items:center;max-width:800px;margin:auto}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f6f7fb}
+header{background:#0f172a;color:#fff;padding:16px 14px}
+.top{display:flex;justify-content:space-between;max-width:800px;margin:auto}
 .logo{font-size:24px;font-weight:900}.logo span{color:#22c55e}
-.badge{background:#22c55e;color:#fff;font-size:11px;padding:4px 8px;border-radius:20px}
-.lang-btn{width:100%;max-width:800px;display:block;margin:12px auto 0;background:#22c55e;color:#fff;border:0;padding:14px;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer}
-header p{max-width:800px;margin:10px auto 0;color:#cbd5e1;font-size:13px}
-.search-box{max-width:800px;margin:12px auto;background:#fff;border-radius:14px;display:flex;overflow:hidden}
-.search-box input{flex:1;border:0;padding:14px;outline:none;font-size:15px}
-.search-box button{border:0;background:#fff;padding:0 12px;font-size:20px;cursor:pointer}
-.mic-btn{border-left:1px solid #eee !important;background:#fef3c7 !important}
-.go-btn{background:#22c55e !important;color:#fff !important;font-weight:800;padding:0 18px !important}
+.lang-btn{width:100%;max-width:800px;display:block;margin:12px auto 0;background:#22c55e;color:#fff;border:0;padding:14px;border-radius:12px;font-weight:900;font-size:16px}
 .wrap{max-width:800px;margin:auto;padding:14px}
-.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-.cat-box{background:#fff;border-radius:18px;padding:22px 14px;text-align:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.06);border:1px solid #eef2f7}
-.cat-box:active{transform:scale(.97);background:#f0fdf4}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat-box{background:#fff;border-radius:18px;padding:22px;text-align:center;cursor:pointer}
 .cat-box .big{font-size:42px}
-.cat-box h3{font-size:16px;margin:10px 0 4px}
-.cat-box p{font-size:12px;color:#64748b}
-.cat-box .count{background:#22c55e;color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;display:inline-block;margin-top:8px;font-weight:700}
-.back-btn{background:#0f172a;color:#fff;border:0;padding:12px 18px;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;margin-bottom:12px}
-.sec-title{font-size:19px;font-weight:900;margin:6px 0 12px;background:#fff;padding:12px;border-radius:12px;border-left:5px solid #22c55e}
-.grid{display:grid;grid-template-columns:1fr;gap:12px}
-.card{background:#fff;border-radius:16px;padding:18px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-.card .icon{font-size:32px}
-.card h3{font-size:17px;margin:8px 0 4px}
-.card p{font-size:13px;color:#64748b;line-height:1.5}
-.card .meta{font-size:12px;color:#16a34a;font-weight:700;margin-top:10px}
-footer{background:#0f172a;color:#cbd5e1;padding:20px 14px;text-align:center;margin-top:20px}
+.card{background:#fff;border-radius:16px;padding:18px;margin-top:12px;cursor:pointer}
+.back-btn{background:#0f172a;color:#fff;border:0;padding:12px;border-radius:12px;font-weight:800;margin-bottom:12px}
+footer{background:#0f172a;color:#cbd5e1;padding:20px;text-align:center;margin-top:20px}
 footer a{color:#fff}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;align-items:flex-end;justify-content:center}
-.modal.open{display:flex}
-.sheet{background:#fff;width:100%;max-width:600px;border-radius:20px 20px 0 0;padding:20px;max-height:85vh;overflow:auto}
-.sheet h2{font-size:20px}.sheet p{color:#64748b;font-size:13px;margin:8px 0;line-height:1.5}
-.close{float:right;font-size:22px;cursor:pointer}
-.big-btn{display:block;text-align:center;padding:13px;border-radius:12px;margin-top:10px;text-decoration:none;font-weight:800}
-.mic-status{text-align:center;font-size:12px;color:#fff;background:#dc2626;padding:6px;border-radius:8px;margin-top:8px;display:none}
 </style>
 </head>
 <body>
 <header>
-<div class="top"><div class="logo">Roorkee<span>Loop</span></div><div class="badge">● LIVE • ROORKEE</div></div>
+<div class="top"><div class="logo">Roorkee<span>Loop</span></div><div>● LIVE</div></div>
 <button class="lang-btn" onclick="toggleLang()" id="langBtn">🌐 English Me Dekho - Tap Karo</button>
-<p id="headDesc">Kisi bhi box pe tap karo - uske andar saare number milenge.</p>
-<div class="search-box">
-<input id="searchInput" placeholder="Kya chahiye? Hospital, Tiffin, Bus..." oninput="render()">
-<button class="mic-btn" onclick="startMic()">🎤</button>
-<button class="go-btn" onclick="render()">Search</button>
-</div>
-<div id="micStatus" class="mic-status"></div>
+<p id="headDesc" style="max-width:800px;margin:10px auto 0;font-size:13px;color:#cbd5e1">Kisi bhi box pe tap karo - uske andar saare number milenge.</p>
 </header>
 <div class="wrap"><div id="list"></div></div>
-<footer>
-<p><b>RoorkeeLoop</b> - <span id="footTxt">Made for Roorkee by Samir Hussain</span></p>
-<p style="margin-top:8px">Contact: <a href="mailto:samirhussainjnb@gmail.com">samirhussainjnb@gmail.com</a></p>
-<p style="margin-top:6px;font-size:12px">Emergency: 112 • Ambulance: 108 • Police: 100</p>
-</footer>
-<div class="modal" id="modal" onclick="if(event.target==this)closeModal()">
-<div class="sheet">
-<span class="close" onclick="closeModal()">✕</span>
-<h2 id="mTitle"></h2><p id="mDesc"></p>
-<p id="mAddr" style="color:#111;font-weight:700"></p>
-<p id="mPhone" style="color:#111;font-weight:700;font-size:16px"></p>
-<a id="mCall" class="big-btn" style="background:#22c55e;color:#fff" href="#">📞 Call Karo</a>
-<a id="mMap" class="big-btn" style="background:#2563eb;color:#fff" target="_blank" href="#">📍 Google Map Me Dekho</a>
-<button class="big-btn" style="background:#f1f5f9;border:0;width:100%;cursor:pointer" onclick="closeModal()" id="closeBtn">Band Karo</button>
-</div>
-</div>
+<footer><p><b>RoorkeeLoop</b> - <span id="footTxt">Made for Roorkee by Samir Hussain</span></p><p>Contact: <a href="mailto:samirhussainjnb@gmail.com">samirhussainjnb@gmail.com</a></p></footer>
 <script>
-let lang='hi';
-let currentCat=null;
-const T={
-hi:{head:'Kisi bhi box pe tap karo - uske andar saare number milenge.',search:'Kya chahiye? Hospital, Tiffin, Bus...',btn:'🌐 English Me Dekho - Tap Karo',foot:'Made for Roorkee by Samir Hussain',call:'📞 Call Karo - ',map:'📍 Google Map Me Dekho',close:'Band Karo',addr:'📍 Address: ',phone:'📞 Number: ',empty:'Kuch nahi mila.',back:'⬅ Wapas - Sab Categories',tap:'Tap karke Number & Map dekho →',cat:{emergency:['🚨','Emergency','112, Ambulance, Police'],hospital:['🏥','Hospital','Doctor, Emergency, OPD'],medical:['💊','Medical / Dawa','Dawa, Pharmacy'],tiffin:['🍱','Tiffin / Khana','Ghar jaisa khana'],bus:['🚌','Bus','Delhi, Haridwar, Dehradun'],train:['🚆','Train','PNR, Timing'],hotel:['🏨','Hotel / Rehne','Hotel, PG, Room']}},
-en:{head:'Tap any box - you will find all numbers inside it.',search:'What do you need? Hospital, Tiffin, Bus...',btn:'🌐 Hindi Me Dekho - Tap Karo',foot:'Made for Roorkee by Samir Hussain',call:'📞 Call Now - ',map:'📍 View on Google Map',close:'Close',addr:'📍 Address: ',phone:'📞 Number: ',empty:'Nothing found.',back:'⬅ Back - All Categories',tap:'Tap to see Number & Map →',cat:{emergency:['🚨','Emergency','112, Ambulance, Police'],hospital:['🏥','Hospital','Doctor, Emergency, OPD'],medical:['💊','Medical','Medicine, Pharmacy'],tiffin:['🍱','Tiffin / Food','Home-like food'],bus:['🚌','Bus','Delhi, Haridwar, Dehradun'],train:['🚆','Train','PNR, Timing'],hotel:['🏨','Hotel / Stay','Hotel, PG, Room']}}
+let lang='hi'; let currentCat=null;
+let T={hi:{head:'Kisi bhi box pe tap karo - uske andar saare number milenge.',btn:'🌐 English Me Dekho - Tap Karo',back:'⬅ Wapas',cat:{emergency:['🚨','Emergency'],hospital:['🏥','Hospital'],medical:['💊','Medical'],tiffin:['🍱','Tiffin'],bus:['🚌','Bus'],train:['🚆','Train'],hotel:['🏨','Hotel']}},en:{head:'Tap any box - you will find all numbers inside.',btn:'🌐 Hindi Me Dekho - Tap Karo',back:'⬅ Back',cat:{emergency:['🚨','Emergency'],hospital:['🏥','Hospital'],medical:['💊','Medical'],tiffin:['🍱','Tiffin'],bus:['🚌','Bus'],train:['🚆','Train'],hotel:['🏨','Hotel']}}};
+let data={
+emergency:[['Emergency - 112','112','All Roorkee'],['Ambulance - 108','108','Roorkee'],['Police - 100','100','Civil Lines']],
+hospital:[['Civil Hospital Roorkee','01332272245','Civil Lines'],['Aarogyam Hospital','01332270000','Delhi Road'],['BSM Hospital','01332271111','Ram Nagar']],
+medical:[['Apollo Pharmacy','01332272222','Civil Lines'],['Jan Aushadhi','18001805555','Near Hospital']],
+tiffin:[['Ghar Jaisa Tiffin','9876543210','IIT Area'],['Maa Ka Dhaba','9876543211','Civil Lines']],
+bus:[['Roorkee Bus Stand','01332271100','Delhi Road'],['Delhi Bus','01332271100','Roorkee to Delhi']],
+train:[['Roorkee Station','139','Station Road'],['Train Enquiry','139','All India']],
+hotel:[['Hotel Royal Palace','01332274444','Delhi Road'],['Hotel Center Point','01332275555','Near Station']]
 };
-function toggleLang(){lang=(lang=='hi'?'en':'hi');document.getElementById('headDesc').innerText=T[lang].head;document.getElementById('langBtn').innerText=T[lang].btn;document.getElementById('searchInput').placeholder=T[lang].search;document.getElementById('footTxt').innerText=T[lang].foot;document.getElementById('closeBtn').innerText=T[lang].close;document.getElementById('mMap').innerText=T[lang].map;render();}
-const data=[
-{cat:'emergency',icon:'🚨',hi:['Emergency - 112','Koi bhi emergency ho toh pehle ye lagao.'],en:['Emergency - 112','For any emergency, call this first.'],addr:'All Roorkee',phone:'112'},
-{cat:'emergency',icon:'🚑',hi:['Ambulance - 108','Free Ambulance, 24 ghante.'],en:['Ambulance - 108','Free Ambulance, 24 hours.'],addr:'Roorkee',phone:'108'},
-{cat:'emergency',icon:'👮',hi:['Roorkee Police - 100','Police help, FIR, emergency.'],en:['Roorkee Police - 100','Police help, FIR, emergency.'],addr:'Civil Lines, Roorkee',phone:'100'},
-{cat:'emergency',icon:'🔥',hi:['Fire Brigade - 101','Aag lagne par turant call karo.'],en:['Fire Brigade - 101','Call immediately in case of fire.'],addr:'Roorkee',phone:'101'},
-{cat:'emergency',icon:'👩',hi:['Mahila Helpline - 1091','Mahila suraksha ke liye.'],en:['Women Helpline - 1091','For women safety.'],addr:'Roorkee',phone:'1091'},
-{cat:'emergency',icon:'🧒',hi:['Child Helpline - 1098','Baccho ke liye madad.'],en:['Child Helpline - 1098','Help for children.'],addr:'Roorkee',phone:'1098'},
-{cat:'emergency',icon:'🚨',hi:['Traffic Police','Traffic jam / accident ke liye.'],en:['Traffic Police','For traffic jam / accident.'],addr:'Roorkee',phone:'01332272200'},
-{cat:'emergency',icon:'🏥',hi:['Emergency Ward - Civil Hospital','24x7 Emergency ward.'],en:['Emergency Ward - Civil Hospital','24x7 Emergency ward.'],addr:'Civil Lines, Roorkee',phone:'01332272245'},
-{cat:'emergency',icon:'⚡',hi:['Bijli Vibhag','Light / Bijli problem ke liye.'],en:['Electricity Dept','For power cut / electricity issue.'],addr:'Roorkee',phone:'1912'},
-{cat:'emergency',icon:'💧',hi:['Pani - Jal Vibhag','Pani ki problem ke liye.'],en:['Water Dept','For water problem.'],addr:'Roorkee',phone:'01332272211'},
-{cat:'emergency',icon:'🐍',hi:['Snake Rescue','Saanp nikalne ke liye.'],en:['Snake Rescue','To remove snake.'],addr:'Roorkee',phone:'9876543200'},
-{cat:'emergency',icon:'🚑',hi:['Private Ambulance - Aarogyam','Private ambulance, fast service.'],en:['Private Ambulance - Aarogyam','Private ambulance, fast service.'],addr:'Delhi Road, Roorkee',phone:'01332270001'},
-{cat:'emergency',icon:'🚑',hi:['Private Ambulance - BSM','Private ambulance.'],en:['Private Ambulance - BSM','Private ambulance.'],addr:'Ram Nagar, Roorkee',phone:'01332271112'},
-{cat:'emergency',icon:'🩸',hi:['Blood Bank - Civil Hospital','Khoon ki zaroorat ho toh.'],en:['Blood Bank - Civil Hospital','If blood is needed.'],addr:'Civil Lines, Roorkee',phone:'01332272246'},
-{cat:'emergency',icon:'🩸',hi:['Blood Donor Group Roorkee','Volunteer blood donor group.'],en:['Blood Donor Group Roorkee','Volunteer blood donor group.'],addr:'Roorkee',phone:'9876543201'},
-{cat:'emergency',icon:'📞',hi:['Disaster Helpline - 1070','Baadh / Bhookamp ke liye.'],en:['Disaster Helpline - 1070','For flood / earthquake.'],addr:'Uttarakhand',phone:'1070'},
-{cat:'emergency',icon:'📞',hi:['Railway Helpline - 139','Train accident / help.'],en:['Railway Helpline - 139','Train accident / help.'],addr:'All India',phone:'139'},
-{cat:'emergency',icon:'📞',hi:['Road Accident Helpline','Road accident me madad.'],en:['Road Accident Helpline','Help in road accident.'],addr:'Roorkee',phone:'112'},
-{cat:'emergency',icon:'🧠',hi:['Mental Health Helpline - 14416','Tension / Mann ki baat ke liye.'],en:['Mental Health Helpline - 14416','For stress / mental health.'],addr:'All India',phone:'14416'},
-{cat:'emergency',icon:'🐶',hi:['Animal Rescue Roorkee','Janwar ko chot lagi ho toh.'],en:['Animal Rescue Roorkee','If animal is injured.'],addr:'Roorkee',phone:'9876543202'},
-{cat:'hospital',icon:'🏥',hi:['Civil Hospital Roorkee','Sarkari Hospital - OPD, Emergency, Delivery.'],en:['Civil Hospital Roorkee','Govt Hospital - OPD, Emergency, Delivery.'],addr:'Civil Lines, Roorkee 247667',phone:'01332272245'},
-{cat:'hospital',icon:'🏥',hi:['Aarogyam Hospital','Private - 24x7 Emergency, ICU, Surgery.'],en:['Aarogyam Hospital','Private - 24x7 Emergency, ICU, Surgery.'],addr:'Delhi Road, Roorkee',phone:'01332270000'},
-{cat:'hospital',icon:'🏥',hi:['B.S.M. Hospital','Multi-speciality, Child & General Physician.'],en:['B.S.M. Hospital','Multi-speciality, Child & General Physician.'],addr:'Ram Nagar, Roorkee',phone:'01332271111'},
-{cat:'hospital',icon:'🏥',hi:['IIT Roorkee Hospital','IIT Campus Hospital - Students & Staff.'],en:['IIT Roorkee Hospital','IIT Campus Hospital - Students & Staff.'],addr:'IIT Roorkee Campus',phone:'01332285000'},
-{cat:'hospital',icon:'🏥',hi:['Sharma Hospital','General Physician, Fever, BP, Sugar.'],en:['Sharma Hospital','General Physician, Fever, BP, Sugar.'],addr:'Railway Road, Roorkee',phone:'01332272233'},
-{cat:'hospital',icon:'🏥',hi:['Gupta Hospital','Child Specialist, Delivery.'],en:['Gupta Hospital','Child Specialist, Delivery.'],addr:'Civil Lines, Roorkee',phone:'01332272234'},
-{cat:'hospital',icon:'🏥',hi:['City Hospital Roorkee','Emergency, X-Ray, Lab.'],en:['City Hospital Roorkee','Emergency, X-Ray, Lab.'],addr:'Delhi Road, Roorkee',phone:'01332272235'},
-{cat:'hospital',icon:'🏥',hi:['Sunrise Hospital','Ortho, Physio, Surgery.'],en:['Sunrise Hospital','Ortho, Physio, Surgery.'],addr:'Haridwar Road, Roorkee',phone:'01332272236'},
-{cat:'hospital',icon:'🦷',hi:['Roorkee Dental Care','Daant ka doctor - Cleaning, Filling.'],en:['Roorkee Dental Care','Dentist - Cleaning, Filling.'],addr:'Civil Lines, Roorkee',phone:'9876543300'},
-{cat:'hospital',icon:'👁️',hi:['Eye Care Roorkee','Aankh ka doctor - Checkup, Chashma.'],en:['Eye Care Roorkee','Eye Doctor - Checkup, Glasses.'],addr:'Main Market, Roorkee',phone:'9876543301'},
-{cat:'hospital',icon:'🦴',hi:['Ortho Care - Dr. Verma','Haddi / Jod ka dard, Fracture.'],en:['Ortho Care - Dr. Verma','Bone / Joint pain, Fracture.'],addr:'Ram Nagar, Roorkee',phone:'9876543302'},
-{cat:'hospital',icon:'❤️',hi:['Heart Care Clinic','Dil ka checkup, ECG, BP.'],en:['Heart Care Clinic','Heart checkup, ECG, BP.'],addr:'Delhi Road, Roorkee',phone:'9876543303'},
-{cat:'hospital',icon:'🧒',hi:['Child Care - Dr. Singh','Baccho ka doctor.'],en:['Child Care - Dr. Singh','Child Specialist.'],addr:'Civil Lines, Roorkee',phone:'9876543304'},
-{cat:'hospital',icon:'🤰',hi:['Maa Hospital - Maternity','Delivery, Pregnancy checkup.'],en:['Maa Hospital - Maternity','Delivery, Pregnancy checkup.'],addr:'Civil Lines, Roorkee',phone:'9876543305'},
-{cat:'hospital',icon:'🧪',hi:['Roorkee Lab - Blood Test','Blood test, Sugar, Thyroid - Ghar se sample.'],en:['Roorkee Lab - Blood Test','Blood test, Sugar, Thyroid - Home sample.'],addr:'Civil Lines, Roorkee',phone:'9876543306'},
-{cat:'hospital',icon:'🏥',hi:['Ayush Ayurvedic Hospital','Ayurvedic ilaj, Panchkarma.'],en:['Ayush Ayurvedic Hospital','Ayurvedic treatment, Panchkarma.'],addr:'Haridwar Road, Roorkee',phone:'9876543307'},
-{cat:'hospital',icon:'🏥',hi:['Homeopathy Clinic - Dr. Jain','Homeopathy ilaj.'],en:['Homeopathy Clinic - Dr. Jain','Homeopathy treatment.'],addr:'Main Market, Roorkee',phone:'9876543308'},
-{cat:'hospital',icon:'🏥',hi:['Skin Care Clinic','Chamdi ka doctor - Daag, Allergy.'],en:['Skin Care Clinic','Skin Doctor - Allergy, Spots.'],addr:'Civil Lines, Roorkee',phone:'9876543309'},
-{cat:'hospital',icon:'🏥',hi:['Physio Care Roorkee','Kamar dard, Physio, Massage.'],en:['Physio Care Roorkee','Back pain, Physio, Massage.'],addr:'Ram Nagar, Roorkee',phone:'9876543310'},
-{cat:'hospital',icon:'🏥',hi:['Veterinary Hospital','Janwaro ka hospital.'],en:['Veterinary Hospital','Animal hospital.'],addr:'Roorkee',phone:'01332272250'},
-{cat:'medical',icon:'💊',hi:['Apollo Pharmacy','Dawa, 24x7. Home delivery bhi hai.'],en:['Apollo Pharmacy','Medicine, 24x7. Home delivery available.'],addr:'Civil Lines, Roorkee',phone:'01332272222'},
-{cat:'medical',icon:'💊',hi:['Jan Aushadhi Kendra','Sasti Generic Dawa - 50-80% sasti.'],en:['Jan Aushadhi Kendra','Cheap Generic Medicine - 50-80% off.'],addr:'Near Civil Hospital, Roorkee',phone:'18001805555'},
-{cat:'medical',icon:'💊',hi:['MedPlus Pharmacy','Dawa + Health checkup.'],en:['MedPlus Pharmacy','Medicine + Health checkup.'],addr:'Main Market, Roorkee',phone:'01332273333'},
-{cat:'medical',icon:'💊',hi:['Sharma Medical Store','Purani aur bharosemand dukaan.'],en:['Sharma Medical Store','Old and trusted shop.'],addr:'Railway Road, Roorkee',phone:'9837000000'},
-{cat:'medical',icon:'💊',hi:['Gupta Medical Store','Sab dawa milti hai.'],en:['Gupta Medical Store','All medicines available.'],addr:'Civil Lines, Roorkee',phone:'9876543400'},
-{cat:'medical',icon:'💊',hi:['Verma Medical Store','24 ghante khula.'],en:['Verma Medical Store','Open 24 hours.'],addr:'Delhi Road, Roorkee',phone:'9876543401'},
-{cat:'medical',icon:'💊',hi:['City Medical Store','Home delivery - 30 min me.'],en:['City Medical Store','Home delivery - in 30 min.'],addr:'Ram Nagar, Roorkee',phone:'9876543402'},
-{cat:'medical',icon:'💊',hi:['IIT Medical Store','IIT area me dawa.'],en:['IIT Medical Store','Medicine in IIT area.'],addr:'IIT Area, Roorkee',phone:'9876543403'},
-{cat:'medical',icon:'💊',hi:['Wellness Pharmacy','Dawa + Baby care.'],en:['Wellness Pharmacy','Medicine + Baby care.'],addr:'Civil Lines, Roorkee',phone:'9876543404'},
-{cat:'medical',icon:'💊',hi:['Health Plus Pharmacy','Discount pe dawa.'],en:['Health Plus Pharmacy','Medicine on discount.'],addr:'Haridwar Road, Roorkee',phone:'9876543405'},
-{cat:'medical',icon:'💊',hi:['Sai Medical Store','Ayurvedic + English dawa.'],en:['Sai Medical Store','Ayurvedic + English medicine.'],addr:'Main Market, Roorkee',phone:'9876543406'},
-{cat:'medical',icon:'💊',hi:['Shree Medical Store','Raat me bhi khula.'],en:['Shree Medical Store','Open at night also.'],addr:'Station Road, Roorkee',phone:'9876543407'},
-{cat:'medical',icon:'💊',hi:['New Life Pharmacy','Diabetes / BP ki dawa.'],en:['New Life Pharmacy','Diabetes / BP medicine.'],addr:'Delhi Road, Roorkee',phone:'9876543408'},
-{cat:'medical',icon:'💊',hi:['Care Pharmacy','Online order - WhatsApp pe.'],en:['Care Pharmacy','Online order - on WhatsApp.'],addr:'Civil Lines, Roorkee',phone:'9876543409'},
-{cat:'medical',icon:'💊',hi:['Goyal Medical Store','Sasti dawa, achha rate.'],en:['Goyal Medical Store','Cheap medicine, good rate.'],addr:'Ram Nagar, Roorkee',phone:'9876543410'},
-{cat:'medical',icon:'💊',hi:['Jain Medical Store','Homeopathy dawa bhi hai.'],en:['Jain Medical Store','Homeopathy medicine also available.'],addr:'Railway Road, Roorkee',phone:'9876543411'},
-{cat:'medical',icon:'💊',hi:['Bansal Medical Store','Sab company ki dawa.'],en:['Bansal Medical Store','All company medicines.'],addr:'Civil Lines, Roorkee',phone:'9876543412'},
-{cat:'medical',icon:'💊',hi:['Agarwal Medical Store','Delivery free hai.'],en:['Agarwal Medical Store','Free delivery.'],addr:'Haridwar Road, Roorkee',phone:'9876543413'},
-{cat:'medical',icon:'💊',hi:['Saraswati Medical','Puraani dukaan, bharosa.'],en:['Saraswati Medical','Old shop, trusted.'],addr:'Main Market, Roorkee',phone:'9876543414'},
-{cat:'medical',icon:'💊',hi:['24x7 Emergency Medical','Raat ko emergency dawa.'],en:['24x7 Emergency Medical','Emergency medicine at night.'],addr:'Near Civil Hospital, Roorkee',phone:'9876543415'},
-{cat:'tiffin',icon:'🍱',hi:['Ghar Jaisa Tiffin','Roz ka ghar jaisa khana - Dal, Roti, Sabzi.'],en:['Ghar Jaisa Tiffin','Daily home-like food - Dal, Roti, Sabzi.'],addr:'IIT Area, Roorkee',phone:'9876543210'},
-{cat:'tiffin',icon:'🍱',hi:['Maa Ka Dhaba Tiffin','Shuddh veg tiffin, Lunch + Dinner.'],en:['Maa Ka Dhaba Tiffin','Pure veg tiffin, Lunch + Dinner.'],addr:'Civil Lines, Roorkee',phone:'9876543211'},
-{cat:'tiffin',icon:'🍱',hi:['Roorkee Tiffin Service','Office aur Hostel delivery.'],en:['Roorkee Tiffin Service','Office and Hostel delivery.'],addr:'Ram Nagar, Roorkee',phone:'9876543212'},
-{cat:'tiffin',icon:'🍱',hi:['Sharma Tiffin Center','Sasta aur swadisht tiffin.'],en:['Sharma Tiffin Center','Cheap and tasty tiffin.'],addr:'Civil Lines, Roorkee',phone:'9876543500'},
-{cat:'tiffin',icon:'🍱',hi:['Gupta Tiffin','Monthly plan - Rs. 2500.'],en:['Gupta Tiffin','Monthly plan - Rs. 2500.'],addr:'IIT Area, Roorkee',phone:'9876543501'},
-{cat:'tiffin',icon:'🍱',hi:['Student Tiffin - IIT','Students ke liye special.'],en:['Student Tiffin - IIT','Special for students.'],addr:'IIT Area, Roorkee',phone:'9876543502'},
-{cat:'tiffin',icon:'🍱',hi:['Verma Food Tiffin','Ghar ka khana, daily fresh.'],en:['Verma Food Tiffin','Home food, daily fresh.'],addr:'Ram Nagar, Roorkee',phone:'9876543503'},
-{cat:'tiffin',icon:'🍱',hi:['Annapurna Tiffin','Veg + Non-veg dono.'],en:['Annapurna Tiffin','Veg + Non-veg both.'],addr:'Delhi Road, Roorkee',phone:'9876543504'},
-{cat:'tiffin',icon:'🍱',hi:['Swad Tiffin Service','Swadisht khana, time pe delivery.'],en:['Swad Tiffin Service','Tasty food, on-time delivery.'],addr:'Civil Lines, Roorkee',phone:'9876543505'},
-{cat:'tiffin',icon:'🍱',hi:['Jain Tiffin - No Onion Garlic','Jain khana - Bina pyaz lehsun.'],en:['Jain Tiffin - No Onion Garlic','Jain food - No onion garlic.'],addr:'Main Market, Roorkee',phone:'9876543506'},
-{cat:'tiffin',icon:'🍱',hi:['Diet Tiffin - Hea
+function toggleLang(){lang=(lang=='hi'?'en':'hi');document.getElementById('headDesc').innerText=T[lang].head;document.getElementById('langBtn').innerText=T[lang].btn;render();}
+function render(){
+let list=document.getElementById('list');
+if(!currentCat){
+let html='<div class="cat-grid">';
+['emergency','hospital','medical','tiffin','bus','train','hotel'].forEach(c=>{html+=`<div class="cat-box" onclick="openCat('${c}')"><div class="big">${T[lang].cat[c][0]}</div><h3>${T[lang].cat[c][1]}</h3><p>Tap Karo →</p></div>`});
+html+='</div>'; list.innerHTML=html; return;
+}
+let html=`<button class="back-btn" onclick="goHome()">${T[lang].back}</button>`;
+data[currentCat].forEach(d=>{html+=`<div class="card"><h3>${d[0]}</h3><p>📍 ${d[2]}</p><p>📞 <a href="tel:${d[1]}">${d[1]}</a></p></div>`});
+list.innerHTML=html;
+}
+function openCat(c){currentCat=c;render();}
+function goHome(){currentCat=null;render();}
+render();
+</script>
+</body>
+</html>
