@@ -19,8 +19,9 @@ header p{max-width:800px;margin:8px auto 0;color:#cbd5e1;font-size:13px}
 .mic-btn{border-left:1px solid #eee !important;background:#fef3c7 !important}
 .go-btn{background:#22c55e !important;color:#fff !important;font-weight:800;padding:0 18px !important}
 .wrap{max-width:800px;margin:auto;padding:14px}
-.tabs{display:flex;flex-direction:column;gap:8px}
-.tab{width:100%;text-align:left;border:1px solid #e2e8f0;background:#fff;padding:13px 14px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:700}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;flex-shrink:0;border:1px solid #e2e8f0;background:#fff;padding:11px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:700}
 .tab.active{background:#0f172a;color:#fff;border-color:#0f172a}
 .sec-title{font-size:19px;font-weight:900;margin:22px 0 10px}
 .count{font-size:12px;color:#64748b;font-weight:400}
@@ -62,9 +63,13 @@ footer a{color:#fff}
 <div id="micStatus" class="mic-status"></div>
 </header>
 <div class="wrap">
+<!-- 1. PEHLE SWIPE WALE TABS -->
 <div class="tabs" id="tabs"></div>
+<p style="font-size:12px;color:#64748b;margin:6px 0 0;text-align:center">👈 Side me swipe karo - Sab option dikhenge</p>
+<!-- 2. FIR SAARI CHEEZEIN -->
 <div id="list"></div>
 
+<!-- 3. SABSE END ME - MOTIVE + REVIEW -->
 <div class="box">
 <h2>💚 Hamara Motive</h2>
 <p>Roorkee me naye aane wale student, family ya kisi bhi visitor ko Hospital, Dawa, Tiffin, Bus, Train ke liye idhar-udhar bhatakna na pade. Isliye humne Roorkee ki saari zaroori jaankari ek jagah jama ki hai. Hamara motive sirf madad karna hai - sahi number, sahi address, sahi time pe.</p>
@@ -81,6 +86,7 @@ footer a{color:#fff}
 <p class="comment">⭐⭐⭐⭐⭐ <b>"Raat ko 11 baje dawa chahiye thi, yaha se number mil gaya. Thank you!"</b><br><span style="color:#64748b;font-size:12px">- Priya, IIT Roorkee Student</span></p>
 <p class="comment">⭐⭐⭐⭐⭐ <b>"Maa ke liye tiffin yahi se liya, ghar jaisa khana hai."</b><br><span style="color:#64748b;font-size:12px">- Rahul, Civil Lines</span></p>
 <p class="comment">⭐⭐⭐⭐⭐ <b>"Bus ka time aur number ek hi jagah mil gaya, bahut aasan ho gaya."</b><br><span style="color:#64748b;font-size:12px">- Anjali, Ram Nagar</span></p>
+<div id="revListShow"></div>
 </div>
 
 <div class="review-box">
@@ -174,5 +180,4 @@ const data=[
 {cat:'medical',icon:'💊',hi:['Sai Medical Store','Ayurvedic + English dawa.'],en:['Sai Medical Store','Ayurvedic + English medicine.'],addr:'Main Market, Roorkee',phone:'9876543406'},
 {cat:'medical',icon:'💊',hi:['Shree Medical Store','Raat me bhi khula.'],en:['Shree Medical Store','Open at night also.'],addr:'Station Road, Roorkee',phone:'9876543407'},
 {cat:'medical',icon:'💊',hi:['New Life Pharmacy','Diabetes / BP ki dawa.'],en:['New Life Pharmacy','Diabetes / BP medicine.'],addr:'Delhi Road, Roorkee',phone:'9876543408'},
-{cat:'medical',icon:'💊',hi:['Care Pharmacy','Online order - WhatsApp pe.'],en:['Care Pharmacy','Online order - on WhatsApp.'],addr:'Civil Lines, Roorkee',phone:'9876543409'},
-{cat:'medical',icon:'💊',hi:['Goyal Medical Store','Sasti dawa, achha rate.'],en:['Goyal Medical Store','Cheap medicine, good rate.'],addr:'Ram Nagar, Roorkee',phone:'9876543410
+{cat:'medical',i
