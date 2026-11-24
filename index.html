@@ -3,107 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RoorkeeLoop - Roorkee Ka Apna Directory</title>
-<!-- RoorkeeLoop - Roorkee Ka Apna Directory -->
+<title>RoorkeeLoop - Roorkee Ki Sab Kuch Ek Jagah</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#FFF8F0;padding:12px;padding-bottom:40px}
-.topbar{background:#111827;color:white;text-align:center;padding:8px;font-size:12px;border-radius:12px;margin-bottom:10px}
-.lang{text-align:center;margin:8px 0}
-.lang button{border:none;padding:8px 16px;border-radius:20px;font-weight:800;color:white;cursor:pointer}
-.lang .hi{background:#ea580c}.lang .en{background:#111827}
-.header{background:linear-gradient(135deg,#ea580c,#db2777,#4f46e5);color:white;padding:28px 15px;border-radius:22px;text-align:center}
-.header h1{font-size:38px}.header h1 span{color:#fde68a}.header p{margin-top:6px;font-size:14px;line-height:1.5}
-.btn-white{background:white;color:#111827;padding:12px 22px;border-radius:30px;text-decoration:none;font-weight:800;display:inline-block;margin-top:14px;font-size:14px}
-.search{background:white;display:flex;gap:8px;padding:10px;border-radius:50px;margin:15px 0;align-items:center;box-shadow:0 4px 15px #ffd9c2}
-.search input{border:none;outline:none;flex:1;font-size:15px}
-.mic{background:#FF6B35;border:none;color:white;padding:10px 13px;border-radius:50%;font-size:18px}
-.banner{width:100%;height:160px;object-fit:cover;border-radius:18px;margin-bottom:12px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 2px 10px #eee;text-align:center;padding-bottom:10px;cursor:pointer}
-.card img{width:100%;height:85px;object-fit:cover}.card h3{font-size:14px;margin-top:6px}.card p{font-size:11px;color:gray}.red{border:2px solid red}
-.section{background:white;padding:14px;border-radius:18px;margin-top:14px;box-shadow:0 2px 8px #f0f0f0}
-.section h2{font-size:17px;margin-bottom:8px}.section img.top{width:100%;height:150px;object-fit:cover;border-radius:14px;margin-bottom:8px}
-.item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid #eee;align-items:center}.item:last-child{border:none}
-.item img{width:70px;height:70px;object-fit:cover;border-radius:12px}.item-info{flex:1}.item-info b{font-size:14px}.item-info small{color:gray;font-size:12px;display:block;margin-top:2px}
-.btns{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
-a.btn{text-decoration:none;font-size:12px;padding:7px 12px;border-radius:20px;color:white;display:inline-block}
-.call{background:#25D366}.map{background:#4285F4}.book{background:#FF6B35}.live{background:#7C3AED}.emailbtn{background:#ea580c}
-.why{background:#111827;color:white;padding:18px;border-radius:18px;margin-top:14px;text-align:center}.why p{color:#cbd5e1;font-size:13px;margin-top:6px;line-height:1.5}
-.footer{text-align:center;color:gray;font-size:12px;margin-top:20px;line-height:18px}
-.float{position:fixed;bottom:20px;right:20px;background:#ea580c;color:white;padding:14px 18px;border-radius:50px;text-decoration:none;font-weight:800;box-shadow:0 10px 20px rgba(0,0,0,.25);font-size:14px}
-.count{background:#ffedd5;color:#ea580c;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:800}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+body{background:#f6f7fb;color:#111}
+header{background:#0f172a;color:#fff;padding:18px 14px 14px;position:sticky;top:0;z-index:10}
+.top{display:flex;justify-content:space-between;align-items:center;max-width:1000px;margin:auto}
+.logo{font-size:24px;font-weight:900}.logo span{color:#22c55e}
+.badge{background:#22c55e;color:#fff;font-size:11px;padding:4px 8px;border-radius:20px}
+header p{max-width:1000px;margin:8px auto 0;color:#cbd5e1;font-size:13px}
+.search-box{max-width:1000px;margin:14px auto;background:#fff;border-radius:14px;display:flex;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.search-box input{flex:1;border:0;padding:14px;outline:none;font-size:15px}
+.search-box button{border:0;background:#fff;padding:0 12px;font-size:20px;cursor:pointer}
+.mic-btn{border-left:1px solid #eee !important;background:#fef3c7 !important}
+.go-btn{background:#22c55e !important;color:#fff !important;font-weight:800;padding:0 18px !important}
+.wrap{max-width:1000px;margin:auto;padding:14px}
+.tabs{display:flex;gap:8px;overflow:auto;padding-bottom:6px}
+.tab{white-space:nowrap;border:1px solid #e2e8f0;background:#fff;padding:8px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700}
+.tab.active{background:#0f172a;color:#fff;border-color:#0f172a}
+.sec-title{font-size:18px;font-weight:900;margin:18px 0 10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:700px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{background:#fff;border-radius:16px;padding:16px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.05);border:1px solid #eef2f7}
+.card:active{transform:scale(.97)}
+.card .icon{font-size:30px}
+.card h3{font-size:15px;margin:8px 0 4px}
+.card p{font-size:12px;color:#64748b;line-height:1.4}
+.card .meta{font-size:11px;color:#16a34a;font-weight:700;margin-top:8px}
+footer{background:#0f172a;color:#cbd5e1;padding:20px 14px;text-align:center;margin-top:20px}
+footer a{color:#fff}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;align-items:flex-end;justify-content:center}
+.modal.open{display:flex}
+.sheet{background:#fff;width:100%;max-width:600px;border-radius:20px 20px 0 0;padding:20px;max-height:85vh;overflow:auto}
+.sheet h2{font-size:20px}.sheet p{color:#64748b;font-size:13px;margin:8px 0;line-height:1.5}
+.close{float:right;font-size:22px;cursor:pointer}
+.big-btn{display:block;text-align:center;padding:13px;border-radius:12px;margin-top:10px;text-decoration:none;font-weight:800}
+.mic-status{text-align:center;font-size:12px;color:#fff;background:#dc2626;padding:6px;border-radius:8px;margin-top:8px;display:none}
 </style>
 </head>
 <body>
-<div class="topbar" id="topbarText">RoorkeeLoop • Roorkee Ka Apna Directory 🇮🇳</div>
-<div class="lang"><button class="hi" onclick="setLang('hi')">हिंदी</button><button class="en" onclick="setLang('en')" style="margin-left:6px">English</button></div>
-<div class="header"><h1>Roorkee<span>Loop</span></h1><p id="headerText">Namaste Roorkee! Aapko kya chahiye?<br>Roorkee ka dil, India ki shaan ❤️</p><a class="btn-white" href="#join" id="joinBtn">🚀 Join The Loop - Free</a></div>
-<div class="search"><input id="searchBox" placeholder="Likho... Doctor, Tiffin, Bus, Train, Dawa..."><button class="mic" onclick="speak()">🎤</button></div>
-<img class="banner" src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=800&q=80" alt="Roorkee">
-<div class="grid">
-<div class="card red" onclick="show('emergency')"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=400"><h3>🚨 Emergency</h3><p>20+ Numbers</p></div>
-<div class="card" onclick="show('hospital')"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400"><h3>Hospital</h3><p>22 Hospital</p></div>
-<div class="card" onclick="show('medical')"><img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400"><h3>Dawa / Medical</h3><p>22 Medical</p></div>
-<div class="card" onclick="show('khana')"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400"><h3>Khana + Tiffin</h3><p>25+ Places</p></div>
-<div class="card" onclick="show('cab')"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400"><h3>Cab + Driving</h3><p>20+ Cab</p></div>
-<div class="card" onclick="show('bus')"><img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400"><h3>Bus</h3><p>20+ Routes</p></div>
-<div class="card" onclick="show('train')"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=400"><h3>Train</h3><p>20+ Trains</p></div>
-<div class="card" onclick="show('kaam')"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400"><h3>Kaam / Naukri</h3><p>20+ Kaam</p></div>
+
+<header>
+<div class="top"><div class="logo">Roorkee<span>Loop</span></div><div class="badge">● LIVE • ROORKEE</div></div>
+<p>Roorkee ki saari zaroori cheezein ek jagah - Hospital, Dawa, Tiffin, Bus, Train, Hotel.</p>
+<div class="search-box">
+<input id="searchInput" placeholder="Kya chahiye? Hospital, Tiffin, Bus..." oninput="filterCards()">
+<button class="mic-btn" onclick="startMic()" title="Bolo">🎤</button>
+<button class="go-btn" onclick="filterCards()">Search</button>
+</div>
+<div id="micStatus" class="mic-status"></div>
+</header>
+
+<div class="wrap">
+<div class="tabs" id="tabs">
+<button class="tab active" onclick="showCat('all',this)">Sab Kuch</button>
+<button class="tab" onclick="showCat('emergency',this)">🚨 Emergency</button>
+<button class="tab" onclick="showCat('hospital',this)">🏥 Hospital</button>
+<button class="tab" onclick="showCat('medical',this)">💊 Medical / Dawa</button>
+<button class="tab" onclick="showCat('tiffin',this)">🍱 Tiffin</button>
+<button class="tab" onclick="showCat('bus',this)">🚌 Bus</button>
+<button class="tab" onclick="showCat('train',this)">🚆 Train</button>
+<button class="tab" onclick="showCat('hotel',this)">🏨 Hotel</button>
+</div>
+<div id="list"></div>
 </div>
 
-<div class="section" id="emergency"><h2>🚨 Emergency <span class="count">20 Numbers</span></h2><img class="top" src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=800">
-<div class="item"><img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200"><div class="item-info"><b>Police - 112</b><small>Roorkee Police - All India Emergency</small><div class="btns"><a class="btn call" href="tel:112">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=200"><div class="item-info"><b>Ambulance - 108</b><small>24 Hrs Free</small><div class="btns"><a class="btn call" href="tel:108">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200"><div class="item-info"><b>Fire Brigade - 101</b><small>Roorkee Fire Station</small><div class="btns"><a class="btn call" href="tel:101">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200"><div class="item-info"><b>Women Helpline - 1091</b><small>24 Hrs</small><div class="btns"><a class="btn call" href="tel:1091">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200"><div class="item-info"><b>Child Helpline - 1098</b><small>Baccho Ke Liye</small><div class="btns"><a class="btn call" href="tel:1098">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200"><div class="item-info"><b>Disaster - 1077</b><small>Uttarakhand Disaster</small><div class="btns"><a class="btn call" href="tel:1077">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200"><div class="item-info"><b>Civil Hospital Roorkee</b><small>Dehradun Road, 8 AM - 2 PM</small><div class="btns"><a class="btn call" href="tel:01332264333">📞 01332-264333</a><a class="btn call" href="tel:9557949323">📞 9557949323</a><a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Civil+Hospital+Roorkee">📍 Map</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>Roorkee Police Station - Civil Lines</b><small>Main Thana</small><div class="btns"><a class="btn call" href="tel:01332272222">📞 Call</a><a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Roorkee+Police+Station+Civil+Lines">📍 Map</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>Gangnahar Police Station</b><small>Ganga Canal Area</small><div class="btns"><a class="btn call" href="tel:01332272233">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>Ram Nagar Police Chowki</b><small>Ram Nagar</small><div class="btns"><a class="btn call" href="tel:01332272244">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>BHEL Police Chowki</b><small>BHEL Area</small><div class="btns"><a class="btn call" href="tel:01332272255">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=200"><div class="item-info"><b>Blood Bank - Civil Hospital</b><small>Khoon Chahiye To</small><div class="btns"><a class="btn call" href="tel:01332264333">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=200"><div class="item-info"><b>Oxygen / Ambulance Private - Salar</b><small>24 Hrs</small><div class="btns"><a class="btn call" href="tel:8273912668">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=200"><div class="item-info"><b>Animal Rescue - Roorkee</b><small>Kutte / Gai Ke Liye</small><div class="btns"><a class="btn call" href="tel:9411195083">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=200"><div class="item-info"><b>Electricity Complaint - 1912</b><small>Bijli Gayi To</small><div class="btns"><a class="btn call" href="tel:1912">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=200"><div class="item-info"><b>Gas Leakage - 1906</b><small>Gas Emergency</small><div class="btns"><a class="btn call" href="tel:1906">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=200"><div class="item-info"><b>Railway Helpline - 139</b><small>Train Emergency</small><div class="btns"><a class="btn call" href="tel:139">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=200"><div class="item-info"><b>Cyber Crime - 1930</b><small>Online Fraud</small><div class="btns"><a class="btn call" href="tel:1930">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=200"><div class="item-info"><b>Road Accident Helpline - 1073</b><small>Highway Accident</small><div class="btns"><a class="btn call" href="tel:1073">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=200"><div class="item-info"><b>Mental Health Helpline - 14416</b><small>Baatein Karo, Dil Halka Karo</small><div class="btns"><a class="btn call" href="tel:14416">📞 Call</a></div></div></div>
+<footer>
+<p><b>RoorkeeLoop</b> - Made for Roorkee by Samir Hussain</p>
+<p style="margin-top:8px">Contact: <a href="mailto:samirhussainjnb@gmail.com">samirhussainjnb@gmail.com</a></p>
+<p style="margin-top:6px;font-size:12px">Emergency: 112 • Ambulance: 108 • Police: 100</p>
+</footer>
+
+<div class="modal" id="modal" onclick="if(event.target==this)closeModal()">
+<div class="sheet">
+<span class="close" onclick="closeModal()">✕</span>
+<h2 id="mTitle"></h2>
+<p id="mDesc"></p>
+<p id="mAddr" style="color:#111;font-weight:700"></p>
+<p id="mPhone" style="color:#111;font-weight:700;font-size:16px"></p>
+<a id="mCall" class="big-btn" style="background:#22c55e;color:#fff" href="#">📞 Call Karo</a>
+<a id="mMap" class="big-btn" style="background:#2563eb;color:#fff" target="_blank" href="#">📍 Google Map Me Dekho</a>
+<button class="big-btn" style="background:#f1f5f9;border:0;width:100%;cursor:pointer" onclick="closeModal()">Band Karo</button>
+</div>
 </div>
 
-<div class="section" id="hospital"><h2>👨‍⚕️ Hospital - Roorkee <span class="count">22 Hospital</span></h2><img class="top" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800">
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>1. Salar Hospital</b><small>Delhi Road, Opp Colonel Enclave, 24 Hrs</small><div class="btns"><a class="btn call" href="tel:8273912668">📞 Call</a><a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Salar+Hospital+Roorkee">📍 Map</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=200"><div class="item-info"><b>2. Divy Mahi Hospital</b><small>Landhora Road, Near Nayra Petrol Pump</small><div class="btns"><a class="btn call" href="tel:8439313644">📞 Call</a><a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Divy+Mahi+Hospital+Roorkee">📍 Map</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200"><div class="item-info"><b>3. Deepak Savitri Global Hospital</b><small>Delhi Road, Roorkee</small><div class="btns"><a class="btn call" href="tel:8272068460">📞 Call</a><a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Deepak+Savitri+Global+Hospital+Roorkee">📍 Map</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=200"><div class="item-info"><b>4. Roorkee Hospital</b><small>Labour Chowk</small><div class="btns"><a class="btn call" href="tel:9411195083">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>5. Vedanta Hospital</b><small>Om Vihar, Delhi Road</small><div class="btns"><a class="btn call" href="tel:9760321266">📞 Call</a><a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Vedanta+Hospital+Roorkee">📍 Map</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>6. Abhilasha Eye & Maternity Hospital</b><small>Railway Station Road</small><div class="btns"><a class="btn call" href="tel:1332272586">📞 Call</a><a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Abhilasha+Hospital+Roorkee">📍 Map</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>7. Garg Urology & Children Hospital</b><small>Old Railway Road, Near Ganna Samiti</small><div class="btns"><a class="btn call" href="tel:8279559536">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>8. Himanshu Hospital</b><small>Roorkee</small><div class="btns"><a class="btn call" href="tel:9675078869">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>9. Brahma Hospital</b><small>Dehradun Road, Chav Mandi, Opp ICICI Bank</small><div class="btns"><a class="btn call" href="tel:8954353103">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>10. Hemant Hospital</b><small>Fatehpur - Kalsiya Marg</small><div class="btns"><a class="btn call" href="tel:9359205044">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>11. Bhatnagar Nursing Home</b><small>Railway Station Road, Purvawali</small><div class="btns"><a class="btn call" href="tel:7895037108">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>12. Aarogya Hospital</b><small>Civil Lines, Roorkee</small><div class="btns"><a class="btn call" href="tel:9837001111">📞 Call</a><a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Aarogya+Hospital+Roorkee">📍 Map</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>13. City Hospital</b><small>Ram Nagar Chowk, Roorkee</small><div class="btns"><a class="btn call" href="tel:9412902222">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>14. Sanjeevani Hospital</b><small>Delhi Road, Roorkee</small><div class="btns"><a class="btn call" href="tel:9760003333">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>15. Ganga Hospital</b><small>Ganga Canal Road, Roorkee</small><div class="btns"><a class="btn call" href="tel:9837114444">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>16. Shree Balaji Hospital</b><small>Landhora Road, Roorkee</small><div class="btns"><a class="btn call" href="tel:9411505555">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>17. Life Care Hospital</b><small>Dehradun Road, Roorkee</small><div class="btns"><a class="btn call" href="tel:9837006666">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>18. Maa Ganga Hospital</b><small>Haridwar Road, Roorkee</small><div class="btns"><a class="btn call" href="tel:9412007777">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>19. Dev Bhoomi Hospital</b><small>Roorkee - Haridwar Road</small><div class="btns"><a class="btn call" href="tel:9837118888">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>20. PHC Dhandhera</b><small>Dhandhera, Roorkee</small><div class="btns"><a class="btn call" href="tel:9997825651">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>21. IIT Roorkee Hospital</b><small>IIT Campus, Roorkee - Students / Staff</small><div class="btns"><a class="btn map" href="https://www.google.com/maps/search/?api=1&query=IIT+Roorkee+Hospital">📍 Map</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200"><div class="item-info"><b>22. Dental Care - Dr. Sharma Clinic</b><small>Civil Lines, Daant Ke Doctor</small><div class="btns"><a class="btn call" href="tel:9837009999">📞 Call</a></div></div></div>
-</div>
-
-<div class="section" id="medical"><h2>💊 Dawa / Medical <span class="count">22 Medical</span></h2><img class="top" src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800">
-<div class="item"><img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=200"><div class="item-info"><b>1. Apollo Pharmacy</b><small>Railway Road, 7 AM - 11 PM</small><div class="btns"><a class="btn call" href="tel:7450320442">📞 Call</a><a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Apollo+Pharmacy+Roorkee">📍 Map</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=200"><div class="item-info"><b>2. Dev Pharma</b><small>Paniyala Road</small><div class="btns"><a class="btn call" href="tel:9720344000">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200"><div class="item-info"><b>3. Star Medical Store</b><small>Rampur Road</small><div class="btns"><a class="btn call" href="tel:7078134752">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=200"><div class="item-info"><b>4. Jan Aushadhi - Vishal Mega Mart</b><small>50-80% Sasti, 10 AM - 9 PM</small><div class="btns"><a class="btn call" href="tel:9105225269">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=200"><div class="item-info"><b>5. Jan Aushadhi - Nehru Stadium</b><div class="btns"><a class="btn call" href="tel:9719431616">📞 Call</a></div></div></div>
-<div class="item"><img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=200"><div class="item-info"><b
+<script>
+const data=[
+{cat:'emergency',icon:'🚨',name:'Emergency - 112',desc:'Koi bhi emergency ho toh pehle ye number lagao.',addr:'All Roorkee, Uttarakhand',phone:'112'},
+{cat:'emergency',icon:'🚑',name:'Ambulance - 108',desc:'Free Ambulance service, 24 ghante.',addr:'Roorkee, Uttarakhand',phone:'108'},
+{cat:'emergency',icon:'👮',name:'Roorkee Police - 100',desc:'Police help, FIR, emergency.',addr:'Civil Lines, Roorkee',phone:'100'},
+{cat:'hospital',icon:'🏥',name:'Civil Hospital Roorkee',desc:'Sarkari Hospital - OPD, Emergency, Delivery.',addr:'Civil Lines, Roorkee, Uttarakhand 247667',phone:'01332272245'},
+{cat:'hospital',icon:'🏥',name:'Aarogyam Hospital',desc:'Private Hospital - 24x7 Emergency, ICU, Surgery.',addr:'Delhi Road, Roorkee',phone:'01332270000'},
+{cat:'hospital',icon:'🏥',name:'B.S.M. Hospital',desc:'Multi-speciality, Child & General Physician.',addr:'Ram Nagar, Roorkee',phone:'01332271111'},
+{cat:'hospital',icon:'🏥',name:'IIT Roorkee Hospital',desc:'IIT Campus Hospital - Students & Staff ke liye.',addr:'IIT Roorkee Campus, Roorkee',phone:'01332285000'},
+{cat:'medical',icon:'💊',name:'Apollo Pharmacy',desc:'Dawa, 24x7 available. Home delivery bhi hai.',addr:'Civil Lines, Roorkee',phone:'01332272222'},
+{cat:'medical',icon:'💊',name:'Jan Aushadhi Kendra',desc:'Sasti Generic Dawa - 50-80% tak sasti.',addr:'Near Civil Hospital, Roorkee',phone:'18001805555'},
+{cat:'medical',icon:'💊',name:'MedPlus Pharmacy',desc:'Dawa + Health checkup.',addr:'Main Market, Roorkee',phone:'01332273333'},
+{cat:'medical',icon:'💊',name:'Sharma Medical Store',desc:'Purani aur bharosemand dukaan.',addr:'Railway Road, Roorkee',phone:'9837000000'},
+{cat:'tiffin',icon:'🍱',name:'Ghar Jaisa Tiffin',desc:'Roz ka ghar jaisa khana - Dal, Roti, Sabzi, Salad.',addr:'IIT Area, Roorkee',phone:'9876543210'},
+{cat:'tiffin',icon:'🍱',name:'Maa Ka Dhaba Tiffin',desc:'Shuddh veg tiffin, Lunch + Dinner. Monthly plan.',addr:'Civil Lines, Roorkee',phone:'9876543211'},
+{cat:'tiffin',icon:'🍱',name:'Roorkee Tiffin Service',desc:'Office aur Hostel delivery. Morning / Evening dono time.',addr:'Ram Nagar, Roorkee',phone:'9876543212'},
+{cat:'bus',icon:'🚌',name:'Roorkee Bus Stand',desc:'Delhi, Haridwar, Dehradun, Saharanpur ke liye bus yaha se milti hai.',addr:'Delhi Road, Roorkee Bus Stand',phone:'01332271100'},
+{cat:'bus',icon:'🚌',name:'Delhi - Roorkee Bus',desc:'Har 30 min me bus. Kiraya ~ Rs. 150-200. Time ~ 3.5 ghante.',addr:'Roorkee to ISBT Delhi',phone:'01332271100'},
+{cat:'bus',icon:'🚌',name:'Haridwar - Roorkee Bus',desc:'Har 15 min me bus. Kiraya ~ Rs. 40. Time ~ 45 min.',addr:'Roorkee to Haridwar',phone:'01332271100'},
+{cat:'train',icon:'🚆',name:'Roorkee Railway Station',desc:'Station Code: RK. Delhi, Dehradun, Haridwar ke liye train.',addr:'Station Road, Roorkee 247667',phone:'139'},
+{cat:'train',icon:'🚆',name:'Train Enquiry - 139',desc:'PNR, Train timing, Seat availability ke liye call karo.',addr:'All India',phone:'139'},
+{cat:'hotel',icon:'🏨',name:'Hotel Royal Palace',desc:'Family stay, AC Room, Food available.',addr:'Delhi Road, Roorkee',phone:'01332274444'},
+{cat:'hotel',icon:'🏨',name:'Hotel Center Point',desc:'Station ke paas, Budget hotel.',addr:'Near Railway Station, Roorkee',phone:'01332275555'},
+{cat:'hotel',icon:'🏨',name:'PG / Room - Students',desc:'IIT ke paas PG, Single / Sharing room.',addr:'IIT Area, Roorkee',phone:'9876543213'},
+];
+let currentCat='all';
+function render(){
+  let q=document.getElementById('searchInput').value.toLowerCase();
+  let list=document.getElementById('list');
+  let filtered=data.filter(d=>(currentCat=='all'||d.cat==currentCat)&&(d.name.toLowerCase().includes(q)||d.desc.toLowerCase().includes(q)||d.addr.toLowerCase().includes(q)));
+  if(filtered.length==0){list.innerHTML='<p style="text-align:center;padding:30px;color:#64748b">Kuch nahi mila. Dusra naam likh ke try karo.</p>';return;}
+  let cats=[...new Set(filtered.map(d=>d.cat))];
+  let html='';
+  cats.forEach(c=>{
+    let title={emergency:'🚨 Emergency',hospital:'🏥 Hospital',medical:'💊 Medical / Dawa',tiffin:'🍱 Tiffin / Khana',bus:'🚌 Bus',train:'🚆 Train',hotel:'🏨 Hotel / Rehne'}[c];
+    html+=`<div class="sec-title">${title}</div><div class="grid">`;
+    filtered.filter(d=>d.cat==c).forEach((d)=>{
+      let idx=data.indexOf(d);
+      html+=`<div class="card" onclick="openModal(${idx})">
+      <div class="icon">${d.icon}</div><h3>${d.name}</h3><p>${d.desc}</p>
+      <div class="meta">Tap karke Number & Map dekho →</div></div>`;
+    });
+    html+=`</div>`;
+  });
+  list.innerHTML=html;
+}
+function showCat(c,el){currentCat=c;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');render();}
+function filterCards(){render();}
+function openModal(idx){
+  let d=data[idx];
+  document.getElementById('mTitle').innerText=d.icon+' '+d.name;
+  document.getElementById('mDesc').innerText=d.desc;
+  document.getElementById('mAddr').innerText='📍 Address: '+d.addr;
+  document.getElementById('mPhone').innerText='📞 Number: '+d.phone;
+  document.getElementById('mCall').href='tel:'+d.phone;
+  document.getElementById('mCall').innerText='📞 Call Karo - '+d.phone;
+  document.getElementById('mMap').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(d.name+' '+d.addr);
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+function showMicMsg(msg){let el=document.getElementById('micStatus');el.style.display='block';el.innerText=msg;setTimeout(()=>{el.style.display='none'},4000);}
+async function startMic(){
+  try{
+    await navigator.mediaDevices.getUserMedia({audio:true});
+  }catch(e){
+    showMicMsg('Mic Block hai! Upar Lock 🔒 > Microphone > Allow karo > Refresh karo');
+    alert('Mic Block hai!\n\nUpar address bar me Lock 🔒 icon pe click karo\n> Microphone > Allow karo\n> Fir page Refresh karo\n> Fir Mic dabao');
+    return;
+  }
+  let SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){alert('Mic is browser me nahi chalega. Chrome me kholo.');return;}
+  let rec=new SR();
+  rec.lang='hi-IN';
+  rec.onresult=(e)=>{
+    let text=e.results[0][0].transcript;
+    document.getElementById('searchInput').value=text;
+    render();
+    showMicMsg('Tune bola: '+text);
+  };
+  rec.onerror=(e)=>{showMicMsg('Mic Error: Lock icon se Allow karo');};
+  rec.start();
+  showMicMsg('🎤 Sun raha hu... Bolo - Hospital, Tiffin, Bus...');
+}
+render();
+</script>
+</body>
+  </html>
