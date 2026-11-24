@@ -11,20 +11,19 @@ header{background:#0f172a;color:#fff;padding:18px 14px 14px;position:sticky;top:
 .top{display:flex;justify-content:space-between;align-items:center;max-width:800px;margin:auto}
 .logo{font-size:24px;font-weight:900}.logo span{color:#22c55e}
 .badge{background:#22c55e;color:#fff;font-size:11px;padding:4px 8px;border-radius:20px}
-.lang-btn{background:#fff;color:#0f172a;border:0;padding:8px 14px;border-radius:20px;font-weight:800;font-size:13px;cursor:pointer;margin-top:10px}
+/* MOTIVE LINE - Search ke upar */
+.motive-line{max-width:800px;margin:10px auto 0;background:#fef9c3;color:#854d0e;padding:10px 12px;border-radius:10px;font-size:13px;font-weight:600;text-align:center;line-height:1.4}
+/* TRANSLATE BUTTON - Bada wala */
+.lang-btn{width:100%;max-width:800px;display:block;margin:10px auto 0;background:#22c55e;color:#fff;border:0;padding:12px;border-radius:12px;font-weight:900;font-size:15px;cursor:pointer}
+.lang-btn:active{transform:scale(.98)}
 header p{max-width:800px;margin:8px auto 0;color:#cbd5e1;font-size:13px}
-.search-box{max-width:800px;margin:14px auto;background:#fff;border-radius:14px;display:flex;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.search-box{max-width:800px;margin:12px auto;background:#fff;border-radius:14px;display:flex;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08)}
 .search-box input{flex:1;border:0;padding:14px;outline:none;font-size:15px}
 .search-box button{border:0;background:#fff;padding:0 12px;font-size:20px;cursor:pointer}
 .mic-btn{border-left:1px solid #eee !important;background:#fef3c7 !important}
 .go-btn{background:#22c55e !important;color:#fff !important;font-weight:800;padding:0 18px !important}
 .wrap{max-width:800px;margin:auto;padding:14px}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{white-space:nowrap;flex-shrink:0;border:1px solid #e2e8f0;background:#fff;padding:11px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:700}
-.tab.active{background:#0f172a;color:#fff;border-color:#0f172a}
-.sec-title{font-size:19px;font-weight:900;margin:22px 0 10px}
-.count{font-size:12px;color:#64748b;font-weight:400}
+.sec-title{font-size:19px;font-weight:900;margin:26px 0 10px;background:#fff;padding:12px;border-radius:12px;border-left:5px solid #22c55e}
 .grid{display:grid;grid-template-columns:1fr;gap:12px}
 .card{background:#fff;border-radius:16px;padding:18px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.05);border:1px solid #eef2f7}
 .card:active{transform:scale(.98)}
@@ -53,8 +52,14 @@ footer a{color:#fff}
 <body>
 <header>
 <div class="top"><div class="logo">Roorkee<span>Loop</span></div><div class="badge">● LIVE • ROORKEE</div></div>
-<p id="headDesc">Roorkee ki saari zaroori cheezein ek jagah - Hospital, Dawa, Tiffin, Bus, Train, Hotel.</p>
-<button class="lang-btn" onclick="toggleLang()" id="langBtn">🌐 English Me Dekho</button>
+
+<!-- CHOTI MOTIVE LINE - Search ke upar -->
+<div class="motive-line" id="motiveLine">💚 Roorkee ke har bande ki madad ke liye - Sahi Number, Sahi Jagah, Sahi Time Pe.</div>
+
+<!-- TRANSLATE BUTTON - Ab ekdam bada aur upar -->
+<button class="lang-btn" onclick="toggleLang()" id="langBtn">🌐 English Me Dekho - Tap Karo</button>
+
+<p id="headDesc">Roorkee ki saari zaroori cheezein ek jagah - Hospital, Dawa, Tiffin, Bus, Train, Hotel. Neeche scroll karo, sab milega.</p>
 <div class="search-box">
 <input id="searchInput" placeholder="Kya chahiye? Hospital, Tiffin, Bus..." oninput="render()">
 <button class="mic-btn" onclick="startMic()">🎤</button>
@@ -63,14 +68,9 @@ footer a{color:#fff}
 <div id="micStatus" class="mic-status"></div>
 </header>
 <div class="wrap">
-<!-- 1. PEHLE SWIPE WALE TABS -->
-<div class="tabs" id="tabs"></div>
-<p style="font-size:12px;color:#64748b;margin:6px 0 0;text-align:center">👈 Side me swipe karo - Sab option dikhenge</p>
-<!-- 2. FIR SAARI CHEEZEIN -->
 <div id="list"></div>
 
-<!-- 3. SABSE END ME - MOTIVE + REVIEW -->
-<div class="box">
+<div class="box" style="margin-top:30px;border-top:4px solid #22c55e">
 <h2>💚 Hamara Motive</h2>
 <p>Roorkee me naye aane wale student, family ya kisi bhi visitor ko Hospital, Dawa, Tiffin, Bus, Train ke liye idhar-udhar bhatakna na pade. Isliye humne Roorkee ki saari zaroori jaankari ek jagah jama ki hai. Hamara motive sirf madad karna hai - sahi number, sahi address, sahi time pe.</p>
 <p><b>RoorkeeLoop kisi se paise nahi leta.</b> Ye website Roorkee ke logo ke liye pyaar se banayi gayi hai.</p>
@@ -120,12 +120,10 @@ footer a{color:#fff}
 <script>
 let lang='hi';
 const T={
-hi:{all:'📋 Sab Kuch',emergency:'🚨 Emergency',hospital:'🏥 Hospital',medical:'💊 Medical / Dawa',tiffin:'🍱 Tiffin',bus:'🚌 Bus',train:'🚆 Train',hotel:'🏨 Hotel',tap:'Tap karke Number & Map dekho →',head:'Roorkee ki saari zaroori cheezein ek jagah - Hospital, Dawa, Tiffin, Bus, Train, Hotel.',search:'Kya chahiye? Hospital, Tiffin, Bus...',btn:'🌐 English Me Dekho',foot:'Made for Roorkee by Samir Hussain',call:'📞 Call Karo - ',map:'📍 Google Map Me Dekho',close:'Band Karo',addr:'📍 Address: ',phone:'📞 Number: ',empty:'Kuch nahi mila. Dusra naam likh ke try karo.',sec:{emergency:'🚨 Emergency',hospital:'🏥 Hospital',medical:'💊 Medical / Dawa',tiffin:'🍱 Tiffin / Khana',bus:'🚌 Bus',train:'🚆 Train',hotel:'🏨 Hotel / Rehne'}},
-en:{all:'📋 All',emergency:'🚨 Emergency',hospital:'🏥 Hospital',medical:'💊 Medical',tiffin:'🍱 Tiffin',bus:'🚌 Bus',train:'🚆 Train',hotel:'🏨 Hotel',tap:'Tap to see Number & Map →',head:'Everything important in Roorkee at one place - Hospital, Medicine, Tiffin, Bus, Train, Hotel.',search:'What do you need? Hospital, Tiffin, Bus...',btn:'🌐 Hindi Me Dekho',foot:'Made for Roorkee by Samir Hussain',call:'📞 Call Now - ',map:'📍 View on Google Map',close:'Close',addr:'📍 Address: ',phone:'📞 Number: ',empty:'Nothing found. Try another name.',sec:{emergency:'🚨 Emergency',hospital:'🏥 Hospital',medical:'💊 Medical',tiffin:'🍱 Tiffin / Food',bus:'🚌 Bus',train:'🚆 Train',hotel:'🏨 Hotel / Stay'}}
+hi:{tap:'Tap karke Number & Map dekho →',head:'Roorkee ki saari zaroori cheezein ek jagah - Hospital, Dawa, Tiffin, Bus, Train, Hotel. Neeche scroll karo, sab milega.',search:'Kya chahiye? Hospital, Tiffin, Bus...',btn:'🌐 English Me Dekho - Tap Karo',foot:'Made for Roorkee by Samir Hussain',call:'📞 Call Karo - ',map:'📍 Google Map Me Dekho',close:'Band Karo',addr:'📍 Address: ',phone:'📞 Number: ',empty:'Kuch nahi mila. Dusra naam likh ke try karo.',motive:'💚 Roorkee ke har bande ki madad ke liye - Sahi Number, Sahi Jagah, Sahi Time Pe.',sec:{emergency:'🚨 Emergency',hospital:'🏥 Hospital',medical:'💊 Medical / Dawa',tiffin:'🍱 Tiffin / Khana',bus:'🚌 Bus',train:'🚆 Train',hotel:'🏨 Hotel / Rehne'}},
+en:{tap:'Tap to see Number & Map →',head:'Everything important in Roorkee at one place - Hospital, Medicine, Tiffin, Bus, Train, Hotel. Scroll down, you will find everything.',search:'What do you need? Hospital, Tiffin, Bus...',btn:'🌐 Hindi Me Dekho - Tap Karo',foot:'Made for Roorkee by Samir Hussain',call:'📞 Call Now - ',map:'📍 View on Google Map',close:'Close',addr:'📍 Address: ',phone:'📞 Number: ',empty:'Nothing found. Try another name.',motive:'💚 To help every person in Roorkee - Right Number, Right Place, Right Time.',sec:{emergency:'🚨 Emergency',hospital:'🏥 Hospital',medical:'💊 Medical',tiffin:'🍱 Tiffin / Food',bus:'🚌 Bus',train:'🚆 Train',hotel:'🏨 Hotel / Stay'}}
 };
-function toggleLang(){lang=(lang=='hi'?'en':'hi');document.getElementById('headDesc').innerText=T[lang].head;document.getElementById('langBtn').innerText=T[lang].btn;document.getElementById('searchInput').placeholder=T[lang].search;document.getElementById('footTxt').innerText=T[lang].foot;document.getElementById('closeBtn').innerText=T[lang].close;document.getElementById('mMap').innerText=T[lang].map;buildTabs();render();}
-function buildTabs(){let cats=[['all',T[lang].all],['emergency',T[lang].emergency],['hospital',T[lang].hospital],['medical',T[lang].medical],['tiffin',T[lang].tiffin],['bus',T[lang].bus],['train',T[lang].train],['hotel',T[lang].hotel]];document.getElementById('tabs').innerHTML=cats.map((c,i)=>`<button class="tab ${currentCat==c[0]?'active':''}" onclick="showCat('${c[0]}',this)">${c[1]}</button>`).join('');}
-let currentCat='all';
+function toggleLang(){lang=(lang=='hi'?'en':'hi');document.getElementById('headDesc').innerText=T[lang].head;document.getElementById('langBtn').innerText=T[lang].btn;document.getElementById('searchInput').placeholder=T[lang].search;document.getElementById('footTxt').innerText=T[lang].foot;document.getElementById('closeBtn').innerText=T[lang].close;document.getElementById('mMap').innerText=T[lang].map;document.getElementById('motiveLine').innerText=T[lang].motive;render();}
 const data=[
 {cat:'emergency',icon:'🚨',hi:['Emergency - 112','Koi bhi emergency ho toh pehle ye lagao.'],en:['Emergency - 112','For any emergency, call this first.'],addr:'All Roorkee',phone:'112'},
 {cat:'emergency',icon:'🚑',hi:['Ambulance - 108','Free Ambulance, 24 ghante.'],en:['Ambulance - 108','Free Ambulance, 24 hours.'],addr:'Roorkee',phone:'108'},
@@ -180,4 +178,6 @@ const data=[
 {cat:'medical',icon:'💊',hi:['Sai Medical Store','Ayurvedic + English dawa.'],en:['Sai Medical Store','Ayurvedic + English medicine.'],addr:'Main Market, Roorkee',phone:'9876543406'},
 {cat:'medical',icon:'💊',hi:['Shree Medical Store','Raat me bhi khula.'],en:['Shree Medical Store','Open at night also.'],addr:'Station Road, Roorkee',phone:'9876543407'},
 {cat:'medical',icon:'💊',hi:['New Life Pharmacy','Diabetes / BP ki dawa.'],en:['New Life Pharmacy','Diabetes / BP medicine.'],addr:'Delhi Road, Roorkee',phone:'9876543408'},
-{cat:'medical',i
+{cat:'medical',icon:'💊',hi:['Care Pharmacy','Online order - WhatsApp pe.'],en:['Care Pharmacy','Online order - on WhatsApp.'],addr:'Civil Lines, Roorkee',phone:'9876543409'},
+{cat:'medical',icon:'💊',hi:['Goyal Medical Store','Sasti dawa, achha rate.'],en:['Goyal Medical Store','Cheap medicine, good rate.'],addr:'Ram Nagar, Roorkee',phone:'9876543410'},
+{cat:'medical
