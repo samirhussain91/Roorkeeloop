@@ -11,11 +11,17 @@ header{background:#0f172a;color:#fff;padding:16px 14px}
 .top{display:flex;justify-content:space-between;max-width:800px;margin:auto}
 .logo{font-size:24px;font-weight:900}.logo span{color:#22c55e}
 .lang-btn{width:100%;max-width:800px;display:block;margin:12px auto 0;background:#22c55e;color:#fff;border:0;padding:14px;border-radius:12px;font-weight:900;font-size:16px}
+.motive{background:#fff;border-left:5px solid #22c55e;border-radius:12px;padding:14px;margin:14px auto 0;max-width:800px}
+.motive h2{font-size:17px;color:#0f172a}
+.motive p{font-size:13px;color:#475569;margin-top:6px;line-height:1.5}
 .wrap{max-width:800px;margin:auto;padding:14px}
 .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .cat-box{background:#fff;border-radius:18px;padding:22px;text-align:center;cursor:pointer}
 .cat-box .big{font-size:42px}
-.card{background:#fff;border-radius:16px;padding:18px;margin-top:12px;cursor:pointer}
+.card{background:#fff;border-radius:16px;padding:18px;margin-top:12px}
+.btns{display:flex;gap:8px;margin-top:12px}
+.btns a{flex:1;text-align:center;padding:12px;border-radius:10px;text-decoration:none;font-weight:900;font-size:14px}
+.call{background:#22c55e;color:#fff}.map{background:#0f172a;color:#fff}
 .back-btn{background:#0f172a;color:#fff;border:0;padding:12px;border-radius:12px;font-weight:800;margin-bottom:12px}
 footer{background:#0f172a;color:#cbd5e1;padding:20px;text-align:center;margin-top:20px}
 footer a{color:#fff}
@@ -24,33 +30,50 @@ footer a{color:#fff}
 <body>
 <header>
 <div class="top"><div class="logo">Roorkee<span>Loop</span></div><div>● LIVE</div></div>
-<button class="lang-btn" onclick="toggleLang()" id="langBtn">🌐 English Me Dekho - Tap Karo</button>
-<p id="headDesc" style="max-width:800px;margin:10px auto 0;font-size:13px;color:#cbd5e1">Kisi bhi box pe tap karo - uske andar saare number milenge.</p>
+<button class="lang-btn" onclick="toggleLang()" id="langBtn">🌐 English Me Dekho</button>
 </header>
+
+<div class="motive">
+<h2 id="motiveTitle">🎯 Hamara Motive</h2>
+<p id="motiveText">Roorkee ke har bande ko ek hi jagah pe sab zaroori number mil jayein - Hospital, Ambulance, Tiffin, Bus, Train, sab kuch. Kisi ko Google pe bhatakna na pade, ek tap me call aur map mil jaye. Ye website Roorkee ke logon ke liye, Roorkee ke bande ne banayi hai.</p>
+</div>
+
 <div class="wrap"><div id="list"></div></div>
-<footer><p><b>RoorkeeLoop</b> - <span id="footTxt">Made for Roorkee by Samir Hussain</span></p><p>Contact: <a href="mailto:samirhussainjnb@gmail.com">samirhussainjnb@gmail.com</a></p></footer>
+<footer><p><b>RoorkeeLoop</b> - <span id="footMade">Made for Roorkee by Samir Hussain</span></p><p><span id="footContact">Contact:</span> <a href="mailto:samirhussainjnb@gmail.com">samirhussainjnb@gmail.com</a></p><p id="footTag" style="font-size:12px;margin-top:8px">Roorkee ka apna Directory ❤️</p></footer>
 <script>
 let lang='hi'; let currentCat=null;
-let T={hi:{head:'Kisi bhi box pe tap karo - uske andar saare number milenge.',btn:'🌐 English Me Dekho - Tap Karo',back:'⬅ Wapas',cat:{emergency:['🚨','Emergency'],hospital:['🏥','Hospital'],medical:['💊','Medical'],tiffin:['🍱','Tiffin'],bus:['🚌','Bus'],train:['🚆','Train'],hotel:['🏨','Hotel']}},en:{head:'Tap any box - you will find all numbers inside.',btn:'🌐 Hindi Me Dekho - Tap Karo',back:'⬅ Back',cat:{emergency:['🚨','Emergency'],hospital:['🏥','Hospital'],medical:['💊','Medical'],tiffin:['🍱','Tiffin'],bus:['🚌','Bus'],train:['🚆','Train'],hotel:['🏨','Hotel']}}};
-let data={
-emergency:[['Emergency - 112','112','All Roorkee'],['Ambulance - 108','108','Roorkee'],['Police - 100','100','Civil Lines']],
-hospital:[['Civil Hospital Roorkee','01332272245','Civil Lines'],['Aarogyam Hospital','01332270000','Delhi Road'],['BSM Hospital','01332271111','Ram Nagar']],
-medical:[['Apollo Pharmacy','01332272222','Civil Lines'],['Jan Aushadhi','18001805555','Near Hospital']],
-tiffin:[['Ghar Jaisa Tiffin','9876543210','IIT Area'],['Maa Ka Dhaba','9876543211','Civil Lines']],
-bus:[['Roorkee Bus Stand','01332271100','Delhi Road'],['Delhi Bus','01332271100','Roorkee to Delhi']],
-train:[['Roorkee Station','139','Station Road'],['Train Enquiry','139','All India']],
-hotel:[['Hotel Royal Palace','01332274444','Delhi Road'],['Hotel Center Point','01332275555','Near Station']]
+let T={
+hi:{btn:'🌐 English Me Dekho',motiveTitle:'🎯 Hamara Motive',motiveText:'Roorkee ke har bande ko ek hi jagah pe sab zaroori number mil jayein - Hospital, Ambulance, Tiffin, Bus, Train, sab kuch. Kisi ko Google pe bhatakna na pade, ek tap me call aur map mil jaye. Ye website Roorkee ke logon ke liye, Roorkee ke bande ne banayi hai.',back:'⬅ Wapas',tap:'Tap Karo →',call:'📞 Call Karo',map:'📍 Map Dekho',contacts:'Contacts',made:'Made for Roorkee by Samir Hussain',contact:'Contact:',tag:'Roorkee ka apna Directory ❤️',cat:{emergency:['🚨','Emergency'],hospital:['🏥','Hospital'],medical:['💊','Medical'],tiffin:['🍱','Tiffin'],bus:['🚌','Bus'],train:['🚆','Train'],hotel:['🏨','Hotel']}},
+en:{btn:'🌐 Hindi Me Dekho',motiveTitle:'🎯 Our Motive',motiveText:'Every person in Roorkee should get all important numbers at one place - Hospital, Ambulance, Tiffin, Bus, Train, everything. No one should have to search on Google. One tap for call and map. This website is made for the people of Roorkee, by a boy from Roorkee.',back:'⬅ Back',tap:'Tap Karo →',call:'📞 Call Now',map:'📍 View Map',contacts:'Contacts',made:'Made for Roorkee by Samir Hussain',contact:'Contact:',tag:'Roorkee Ka Apna Directory ❤️',cat:{emergency:['🚨','Emergency'],hospital:['🏥','Hospital'],medical:['💊','Medical'],tiffin:['🍱','Tiffin'],bus:['🚌','Bus'],train:['🚆','Train'],hotel:['🏨','Hotel']}}
 };
-function toggleLang(){lang=(lang=='hi'?'en':'hi');document.getElementById('headDesc').innerText=T[lang].head;document.getElementById('langBtn').innerText=T[lang].btn;render();}
+let data={
+emergency:[['Emergency - 112','112','All Roorkee'],['Ambulance - 108','108','All Roorkee'],['Police - 100','100','Civil Lines'],['Fire Brigade - 101','101','Roorkee'],['Women Helpline','1091','All India'],['Child Helpline','1098','All India'],['Cyber Crime','1930','All India'],['Blood Bank - Civil Hospital','01332272245','Civil Lines'],['Disaster Help','1077','Roorkee'],['Traffic Police','01332272222','Civil Lines']],
+hospital:[['Civil Hospital Roorkee','01332272245','Civil Lines, Roorkee'],['Aarogyam Hospital','01332270000','Delhi Road, Roorkee'],['BSM Hospital','01332271111','Ram Nagar, Roorkee'],['IIT Roorkee Hospital','01332282999','IIT Roorkee'],['Satyam Hospital','01332273333','Civil Lines, Roorkee'],['City Hospital','01332274444','Delhi Road, Roorkee'],['Life Care Hospital','01332275555','Ram Nagar, Roorkee'],['Jeevan Hospital','01332276666','Civil Lines, Roorkee'],['Sharma Hospital','01332277777','Station Road, Roorkee'],['Ganga Hospital','01332278888','Delhi Road, Roorkee']],
+medical:[['Apollo Pharmacy','01332272222','Civil Lines, Roorkee'],['Jan Aushadhi Kendra','18001805555','Near Civil Hospital'],['MedPlus Pharmacy','01332273333','Delhi Road, Roorkee'],['Sharma Medical Store','01332274444','Civil Lines, Roorkee'],['City Medical Store','01332275555','Station Road, Roorkee'],['Gupta Medical','01332276666','Ram Nagar, Roorkee'],['24x7 Dawao Delivery','9876543210','All Roorkee'],['Health Plus Pharmacy','01332277777','IIT Road, Roorkee']],
+tiffin:[['Ghar Jaisa Tiffin','9876543210','IIT Area, Roorkee'],['Maa Ka Dhaba','9876543211','Civil Lines, Roorkee'],['Sharma Tiffin Service','9876543212','Ram Nagar, Roorkee'],['Student Tiffin','9876543213','IIT Area, Roorkee'],['Annapurna Tiffin','9876543214','Delhi Road, Roorkee'],['Roorkee Tiffin Wala','9876543215','Civil Lines, Roorkee'],['Bhaiya Ka Tiffin','9876543216','Station Road, Roorkee'],['Ghar Ka Khana','9876543217','All Roorkee']],
+bus:[['Roorkee Bus Stand Enquiry','01332271100','Delhi Road, Roorkee'],['Delhi Bus - Roadways','01332271100','Roorkee to Delhi'],['Haridwar Bus','01332271101','Roorkee to Haridwar'],['Dehradun Bus','01332271102','Roorkee to Dehradun'],['Saharanpur Bus','01332271103','Roorkee to Saharanpur'],['Mussoorie Bus','01332271104','Roorkee to Mussoorie'],['Chandigarh Bus','01332271105','Roorkee to Chandigarh']],
+train:[['Roorkee Railway Station','139','Station Road, Roorkee'],['Train Enquiry - 139','139','All India'],['PNR Status - 139','139','All India'],['Railway Police','1512','Roorkee Station'],['Ticket Booking Help','139','Roorkee Station']],
+hotel:[['Hotel Royal Palace','01332274444','Delhi Road, Roorkee'],['Hotel Center Point','01332275555','Near Station, Roorkee'],['Hotel Ganga','01332276666','Civil Lines, Roorkee'],['Hotel Shagun','01332277777','Delhi Road, Roorkee'],['Hotel IIT Inn','01332278888','IIT Road, Roorkee'],['Hotel City Star','01332279999','Station Road, Roorkee'],['Hotel Krishna','01332271111','Civil Lines, Roorkee'],['Oyo Rooms Roorkee','1246208083','All Roorkee']]
+};
+function toggleLang(){lang=(lang=='hi'?'en':'hi');
+document.getElementById('langBtn').innerText=T[lang].btn;
+document.getElementById('motiveTitle').innerText=T[lang].motiveTitle;
+document.getElementById('motiveText').innerText=T[lang].motiveText;
+document.getElementById('footMade').innerText=T[lang].made;
+document.getElementById('footContact').innerText=T[lang].contact;
+document.getElementById('footTag').innerText=T[lang].tag;
+render();}
 function render(){
 let list=document.getElementById('list');
 if(!currentCat){
 let html='<div class="cat-grid">';
-['emergency','hospital','medical','tiffin','bus','train','hotel'].forEach(c=>{html+=`<div class="cat-box" onclick="openCat('${c}')"><div class="big">${T[lang].cat[c][0]}</div><h3>${T[lang].cat[c][1]}</h3><p>Tap Karo →</p></div>`});
+['emergency','hospital','medical','tiffin','bus','train','hotel'].forEach(c=>{html+=`<div class="cat-box" onclick="openCat('${c}')"><div class="big">${T[lang].cat[c][0]}</div><h3>${T[lang].cat[c][1]}</h3><p>${data[c].length} ${T[lang].contacts} • ${T[lang].tap}</p></div>`});
 html+='</div>'; list.innerHTML=html; return;
 }
 let html=`<button class="back-btn" onclick="goHome()">${T[lang].back}</button>`;
-data[currentCat].forEach(d=>{html+=`<div class="card"><h3>${d[0]}</h3><p>📍 ${d[2]}</p><p>📞 <a href="tel:${d[1]}">${d[1]}</a></p></div>`});
+data[currentCat].forEach(d=>{
+let mapLink='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(d[0]+' '+d[2]);
+html+=`<div class="card"><h3>${d[0]}</h3><p>📍 ${d[2]}</p><p style="font-size:18px;font-weight:900;margin-top:6px">📞 ${d[1]}</p><div class="btns"><a class="call" href="tel:${d[1]}">${T[lang].call}</a><a class="map" target="_blank" href="${mapLink}">${T[lang].map}</a></div></div>`});
 list.innerHTML=html;
 }
 function openCat(c){currentCat=c;render();}
